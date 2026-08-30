@@ -7,9 +7,20 @@ Features:
 1. Counts occurrences of each base (A, T, G, C)
 2. Calculates GC content (%)
 3. Validates whether the sequence contains only valid DNA bases
+4. Calculates the reverse complement of the sequence
  
 Author: Anam
 """
+ 
+def reverse_complement(seq):
+    seq = seq.upper()
+    complement_map = {"A": "T", "T": "A", "G": "C", "C": "G"}
+    complement_seq = ""
+    for base in seq:
+        complement_seq += complement_map[base]
+    reverse_seq = complement_seq[::-1]
+    return reverse_seq
+ 
  
 def analyze_sequence(seq):
     seq = seq.upper()  # make sure input is uppercase for consistent checking
@@ -49,6 +60,9 @@ def analyze_sequence(seq):
         print("Sequence is valid! (Contains only A, T, G, C)")
     else:
         print("Sequence is invalid - contains incorrect letters.")
+ 
+    print("\n--- Reverse Complement ---")
+    print(reverse_complement(seq))
  
  
 if __name__ == "__main__":
